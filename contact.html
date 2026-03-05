@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — NuWorld Media</title>
+  <meta name="description" content="Get in touch with NuWorld Media. Start a transit advertising campaign in Eswatini. 134 Gule Street, Mbabane." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* ── CONTACT-SPECIFIC ── */
+
+    .contact-section {
+      padding: 6rem 0 7rem;
+      background: var(--navy);
+    }
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    /* Contact Info */
+    .contact-info .section-title { margin-bottom: 1.25rem; }
+    .contact-info > p {
+      color: rgba(255,255,255,0.6);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+    }
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .contact-detail-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(245,166,35,0.1);
+      border: 1px solid rgba(245,166,35,0.25);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-detail-icon svg {
+      width: 20px; height: 20px;
+      color: var(--amber);
+    }
+    .contact-detail-text h4 {
+      font-family: var(--font-condensed);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 0.25rem;
+    }
+    .contact-detail-text p {
+      font-size: 0.95rem;
+      color: var(--white);
+      line-height: 1.55;
+    }
+    .contact-detail-text a {
+      color: var(--white);
+      transition: color 0.2s;
+    }
+    .contact-detail-text a:hover { color: var(--amber); }
+
+    /* Services of Interest */
+    .services-interest {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 1.75rem;
+    }
+    .services-interest h4 {
+      font-family: var(--font-condensed);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1.25rem;
+    }
+    .service-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .service-option {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.65);
+    }
+    .service-option::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: rgba(245,166,35,0.35);
+      border: 1px solid var(--amber);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    /* Contact Form */
+    .contact-form-wrapper {
+      background: var(--navy-mid);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 3rem;
+    }
+    .contact-form-wrapper h3 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    .contact-form-wrapper > p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .form-group label {
+      font-family: var(--font-condensed);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+    .form-group label .req { color: var(--amber); margin-left: 2px; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      padding: 0.85rem 1rem;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--white);
+      outline: none;
+      transition: all 0.25s ease;
+      width: 100%;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(255,255,255,0.25);
+    }
+    .form-group select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 14px;
+      cursor: pointer;
+    }
+    .form-group select option { background: var(--navy); color: var(--white); }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: rgba(245,166,35,0.6);
+      background: rgba(245,166,35,0.04);
+      box-shadow: 0 0 0 3px rgba(245,166,35,0.08);
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 130px;
+    }
+    .form-checkbox {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+      cursor: pointer;
+    }
+    .form-checkbox input { width: auto; }
+    .form-checkbox span {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.55;
+    }
+    .form-submit {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .form-note {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+      line-height: 1.5;
+    }
+
+    /* Success message */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 2.5rem;
+    }
+    .form-success .success-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .form-success h4 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+    .form-success p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* Map / Location */
+    .location-section {
+      padding: 0 0 7rem;
+      background: var(--navy);
+    }
+    .location-card {
+      background: var(--navy-mid);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .location-map-placeholder {
+      background: rgba(26,78,216,0.08);
+      border-right: 1px solid rgba(255,255,255,0.08);
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: 3rem;
+      text-align: center;
+    }
+    .location-map-placeholder .map-icon {
+      font-size: 3rem;
+    }
+    .location-map-placeholder p {
+      font-family: var(--font-condensed);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      line-height: 1.6;
+    }
+    .location-map-placeholder a {
+      font-family: var(--font-condensed);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--amber);
+      border: 1px solid rgba(245,166,35,0.35);
+      padding: 0.5rem 1.2rem;
+      border-radius: 3px;
+      transition: all 0.2s;
+    }
+    .location-map-placeholder a:hover {
+      background: rgba(245,166,35,0.1);
+    }
+    .location-info {
+      padding: 3rem;
+    }
+    .location-info h3 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      margin-bottom: 1.75rem;
+    }
+    .location-detail {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .location-detail-icon {
+      color: var(--amber);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .location-detail h5 {
+      font-family: var(--font-condensed);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 0.3rem;
+    }
+    .location-detail p {
+      font-size: 0.92rem;
+      color: var(--white);
+      line-height: 1.55;
+    }
+    .location-detail a { color: var(--white); transition: color 0.2s; }
+    .location-detail a:hover { color: var(--amber); }
+
+    @media (max-width: 1024px) {
+      .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .location-card { grid-template-columns: 1fr; }
+      .location-map-placeholder { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    }
+    @media (max-width: 640px) {
+      .form-row { grid-template-columns: 1fr; }
+      .contact-form-wrapper { padding: 2rem 1.5rem; }
+      .form-submit { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar scrolled" id="navbar">
+    <div class="container">
+      <div class="navbar-inner">
+        <a href="index.html" class="logo-box">
+          <img src="logo1.png" alt="NuWorld Media" style="height: 48px; width: auto;" />
+          <div class="logo-text">Nu<span>World</span></div>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Our Work</a></li>
+          <li><a href="contact.html" class="active">Get In Touch</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="menuClose">✕</button>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="portfolio.html">Our Work</a>
+    <a href="contact.html">Get In Touch</a>
+  </div>
+
+  <section class="page-hero">
+    <div class="page-hero-grid"></div>
+    <div class="container">
+      <p class="section-label">Let's Talk</p>
+      <h1>Start Your<br><span class="amber">Campaign.</span></h1>
+      <p>Tell us about your brand, your audience and your goals. We'll design the right transit media strategy to get your message in front of the right people.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-layout">
+
+        <!-- Left: Info -->
+        <div class="contact-info reveal">
+          <p class="section-label">Get In Touch</p>
+          <h2 class="section-title">Let's Build<br><span class="amber">Together.</span></h2>
+          <p>Whether you're ready to launch a campaign or just exploring your options, we'd love to hear from you. Our team will get back to you within 24 hours.</p>
+
+          <div class="contact-details">
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </div>
+              <div class="contact-detail-text">
+                <h4>Office Address</h4>
+                <p>134 Gule Street Extension 3<br>Mbabane, Eswatini</p>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              </div>
+              <div class="contact-detail-text">
+                <h4>Email</h4>
+                <p><a href="mailto:iamsanza@gmx.com">iamsanza@gmx.com</a></p>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              </div>
+              <div class="contact-detail-text">
+                <h4>Phone</h4>
+                <p>
+                  <a href="tel:+26879954649">+268 7995 4649</a><br>
+                  <a href="tel:+26878323640">+268 7832 3640</a>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="services-interest">
+            <h4>Services Available</h4>
+            <div class="service-options">
+              <div class="service-option">Bus Rear Wrap Advertising</div>
+              <div class="service-option">Full Vehicle Wrap</div>
+              <div class="service-option">Partial Vehicle Wrap</div>
+              <div class="service-option">Commuter TV (In-Kombi Video Ads)</div>
+              <div class="service-option">Roadside Billboard Advertising</div>
+              <div class="service-option">Campaign Strategy &amp; Creative</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="contact-form-wrapper reveal reveal-delay-1">
+          <h3>Send Us a Message</h3>
+          <p>Fill in the form below and we'll be in touch within 24 hours.</p>
+
+          <div id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name <span class="req">*</span></label>
+                <input type="text" id="firstName" placeholder="Your first name" />
+              </div>
+              <div class="form-group">
+                <label>Last Name <span class="req">*</span></label>
+                <input type="text" id="lastName" placeholder="Your last name" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Email Address <span class="req">*</span></label>
+                <input type="email" id="email" placeholder="your@email.com" />
+              </div>
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" id="phone" placeholder="+268 ..." />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Company / Brand Name</label>
+              <input type="text" id="company" placeholder="Your company or brand" />
+            </div>
+            <div class="form-group">
+              <label>Service of Interest <span class="req">*</span></label>
+              <select id="service">
+                <option value="" disabled selected>Select a service...</option>
+                <option value="transit-rear">Bus Rear Wrap</option>
+                <option value="transit-full">Full Vehicle Wrap</option>
+                <option value="transit-partial">Partial Vehicle Wrap</option>
+                <option value="commuter-tv">Commuter TV</option>
+                <option value="billboard">Roadside Billboard</option>
+                <option value="multiple">Multiple Services</option>
+                <option value="unsure">Not Sure — Need Advice</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Campaign Budget (Optional)</label>
+              <select id="budget">
+                <option value="" disabled selected>Select a budget range...</option>
+                <option value="under-10k">Under E10,000</option>
+                <option value="10k-50k">E10,000 – E50,000</option>
+                <option value="50k-100k">E50,000 – E100,000</option>
+                <option value="100k-plus">E100,000+</option>
+                <option value="unsure">Not Sure Yet</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Tell Us About Your Campaign</label>
+              <textarea id="message" placeholder="Describe your goals, target audience, timeline, or any other details you'd like us to know..."></textarea>
+            </div>
+            <div class="form-submit">
+              <button class="btn btn-amber" id="submitBtn" onclick="handleSubmit(event)">
+                Send Message
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+              <span class="form-note">We respond within 24 hours,<br>Monday to Friday.</span>
+            </div>
+          </div>
+
+          <div class="form-success" id="formSuccess">
+            <div class="success-icon">✅</div>
+            <h4>Message Sent!</h4>
+            <p>Thank you for reaching out to NuWorld Media. We've received your message and will be in touch within 24 hours.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section class="location-section">
+    <div class="container">
+      <div class="location-card reveal">
+        <div class="location-map-placeholder">
+          <div class="map-icon">📍</div>
+          <p>134 Gule Street Extension 3<br>Mbabane, Eswatini</p>
+          <a href="https://maps.google.com/?q=Mbabane+Eswatini" target="_blank" rel="noopener">Open in Google Maps ↗</a>
+        </div>
+        <div class="location-info">
+          <h3>Find Us in Mbabane</h3>
+          <div class="location-detail">
+            <svg class="location-detail-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            <div>
+              <h5>Address</h5>
+              <p>134 Gule Street Extension 3<br>Mbabane, Eswatini</p>
+            </div>
+          </div>
+          <div class="location-detail">
+            <svg class="location-detail-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <div>
+              <h5>Email</h5>
+              <p><a href="mailto:iamsanza@gmx.com">iamsanza@gmx.com</a></p>
+            </div>
+          </div>
+          <div class="location-detail">
+            <svg class="location-detail-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            <div>
+              <h5>Phone</h5>
+              <p>
+                <a href="tel:+26879954649">+268 7995 4649</a><br>
+                <a href="tel:+26878323640">+268 7832 3640</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo-box">
+            <img src="logo1.png" alt="NuWorld Media" style="height: 48px; width: auto;" />
+            <div class="logo-text">Nu<span>World</span></div>
+          </a>
+          <p>Eswatini's leading transit advertising specialists. A collaborative effort between Triple Three Media, Dotmedia and Nkente Media.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="portfolio.html">Our Work</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html#transit">Transit Advertising</a></li>
+            <li><a href="services.html#commuter-tv">Commuter TV</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <div class="footer-contact-item">
+            <svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            <span>134 Gule Street Extension 3,<br>Mbabane, Eswatini</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <span>iamsanza@gmx.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            <span>+268 7995 4649<br>+268 7832 3640</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 NuWorld Media. All rights reserved.</span>
+        <span>Mbabane, Eswatini</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
+    document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileMenu').classList.add('open'));
+    document.getElementById('menuClose').addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open'));
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      const firstName = document.getElementById('firstName').value.trim();
+      const lastName = document.getElementById('lastName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const service = document.getElementById('service').value;
+
+      if (!firstName || !lastName || !email || !service) {
+        // Highlight empty required fields
+        ['firstName','lastName','email','service'].forEach(id => {
+          const el = document.getElementById(id);
+          if (!el.value.trim()) {
+            el.style.borderColor = 'rgba(255,100,100,0.6)';
+            el.style.background = 'rgba(255,0,0,0.04)';
+            setTimeout(() => {
+              el.style.borderColor = '';
+              el.style.background = '';
+            }, 3000);
+          }
+        });
+        return;
+      }
+
+      // Show success
+      document.getElementById('contactForm').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    }
+
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

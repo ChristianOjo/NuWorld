@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — NuWorld Media</title>
+  <meta name="description" content="NuWorld Media offers transit billboard advertising and Commuter TV across Eswatini. Bus rear wraps, full wraps, partial wraps and in-kombi video advertising." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* ── SERVICES-SPECIFIC ── */
+
+    /* Service Nav Tabs */
+    .service-tabs {
+      background: var(--navy-mid);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      position: sticky;
+      top: 72px;
+      z-index: 50;
+    }
+    .service-tabs-inner {
+      display: flex;
+      gap: 0;
+    }
+    .service-tab {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1.25rem 2rem;
+      font-family: var(--font-condensed);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      border-bottom: 3px solid transparent;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    .service-tab:hover { color: var(--white); }
+    .service-tab.active {
+      color: var(--amber);
+      border-bottom-color: var(--amber);
+    }
+    .service-tab-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(245,166,35,0.15);
+      border: 1px solid rgba(245,166,35,0.3);
+      color: var(--amber);
+      font-size: 0.7rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Section Intro */
+    .service-intro {
+      padding: 6rem 0 4rem;
+    }
+    .service-intro-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .service-intro-text .section-title { margin-bottom: 1.5rem; }
+    .service-intro-text p {
+      color: rgba(255,255,255,0.65);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    .service-intro-text p strong { color: var(--white); }
+    .service-intro-img {
+      border-radius: 8px;
+      overflow: hidden;
+      height: 420px;
+    }
+    .service-intro-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+
+    /* Packages */
+    .packages {
+      padding: 5rem 0 6rem;
+    }
+    .packages h3 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 2.5rem;
+      color: var(--white);
+    }
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .package-card {
+      background: var(--navy-mid);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: all 0.35s ease;
+      position: relative;
+    }
+    .package-card.featured {
+      border-color: var(--amber);
+    }
+    .package-card.featured::before {
+      content: 'Most Popular';
+      position: absolute;
+      top: 1rem; right: 1rem;
+      font-family: var(--font-condensed);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      background: var(--amber);
+      color: var(--navy);
+      padding: 0.25rem 0.65rem;
+      border-radius: 2px;
+    }
+    .package-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+      border-color: rgba(245,166,35,0.35);
+    }
+    .package-img {
+      height: 200px;
+      overflow: hidden;
+    }
+    .package-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .package-card:hover .package-img img { transform: scale(1.05); }
+    .package-body { padding: 1.75rem; }
+    .package-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+    .package-body h4 {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+    .package-body p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    .package-features { margin-bottom: 1.75rem; }
+    .package-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 0.6rem;
+    }
+    .package-feature::before {
+      content: '✓';
+      color: var(--amber);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* Commuter TV */
+    .commuter-tv-section {
+      background: var(--navy-mid);
+    }
+    .how-it-works {
+      padding: 6rem 0 4rem;
+    }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .step {
+      position: relative;
+      padding: 2rem 1.5rem;
+      background: var(--navy);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 8px;
+    }
+    .step::after {
+      content: '→';
+      position: absolute;
+      right: -1.25rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--amber);
+      font-size: 1.2rem;
+      z-index: 1;
+    }
+    .step:last-child::after { display: none; }
+    .step-num {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      color: rgba(245,166,35,0.12);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .step h4 {
+      font-family: var(--font-condensed);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    .step p {
+      font-size: 0.83rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+    }
+
+    /* Pricing */
+    .pricing {
+      padding: 5rem 0 6rem;
+    }
+    .pricing-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .pricing-card {
+      background: var(--navy);
+      border: 1px solid rgba(245,166,35,0.3);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .pricing-card-header {
+      background: var(--amber);
+      padding: 2rem 2.5rem;
+    }
+    .pricing-card-header .plan-name {
+      font-family: var(--font-condensed);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(10,22,40,0.7);
+      margin-bottom: 0.5rem;
+    }
+    .pricing-card-header .price {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      color: var(--navy);
+      line-height: 1;
+    }
+    .pricing-card-header .price-sub {
+      font-family: var(--font-condensed);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: rgba(10,22,40,0.6);
+      margin-top: 0.25rem;
+    }
+    .pricing-card-body {
+      padding: 2rem 2.5rem 2.5rem;
+    }
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+    }
+    .pricing-table th {
+      font-family: var(--font-condensed);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--amber);
+      text-align: left;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .pricing-table td {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.7);
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .pricing-table tr:last-child td { border-bottom: none; }
+    .pricing-table td:last-child {
+      text-align: right;
+      color: var(--white);
+      font-weight: 500;
+    }
+    .pricing-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .p-highlight {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+      padding: 1.25rem;
+      background: var(--navy);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 8px;
+      transition: all 0.25s ease;
+    }
+    .p-highlight:hover {
+      border-color: rgba(245,166,35,0.25);
+      background: rgba(245,166,35,0.04);
+    }
+    .p-highlight .ph-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .p-highlight h5 {
+      font-family: var(--font-condensed);
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+    .p-highlight p {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.55;
+    }
+
+    /* CTV Images */
+    .ctv-gallery {
+      padding: 4rem 0 6rem;
+    }
+    .ctv-gallery-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 1rem;
+      height: 400px;
+    }
+    .ctv-gallery-item {
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .ctv-gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .ctv-gallery-item:hover img { transform: scale(1.04); }
+
+    /* Service CTA */
+    .service-cta {
+      padding: 6rem 0;
+      background: var(--navy);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 100%, rgba(26,78,216,0.15) 0%, transparent 60%);
+    }
+    .service-cta-content { position: relative; z-index: 1; }
+    .service-cta h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      letter-spacing: 0.03em;
+      line-height: 1.0;
+      margin-bottom: 1.25rem;
+    }
+    .service-cta p {
+      color: rgba(255,255,255,0.6);
+      font-size: 1.05rem;
+      max-width: 480px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 1024px) {
+      .service-intro-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .packages-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr 1fr; }
+      .step::after { display: none; }
+      .pricing-layout { grid-template-columns: 1fr; }
+      .ctv-gallery-grid { grid-template-columns: 1fr 1fr; height: auto; }
+      .ctv-gallery-item:first-child { grid-column: 1/-1; height: 260px; }
+      .ctv-gallery-item:not(:first-child) { height: 180px; }
+    }
+    @media (max-width: 768px) {
+      .steps-grid { grid-template-columns: 1fr; }
+      .service-tab span.label { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar scrolled" id="navbar">
+    <div class="container">
+      <div class="navbar-inner">
+        <a href="index.html" class="logo-box">
+          <img src="logo1.png" alt="NuWorld Media" style="height: 48px; width: auto;" />
+          <div class="logo-text">Nu<span>World</span></div>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html" class="active">Services</a></li>
+          <li><a href="portfolio.html">Our Work</a></li>
+          <li><a href="contact.html" class="nav-cta">Get In Touch</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="menuClose">✕</button>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="portfolio.html">Our Work</a>
+    <a href="contact.html">Get In Touch</a>
+  </div>
+
+  <section class="page-hero">
+    <div class="page-hero-grid"></div>
+    <div class="container">
+      <p class="section-label">What We Offer</p>
+      <h1>Two Powerful<br><span class="amber">Platforms.</span></h1>
+      <p>From moving billboards on Eswatini's roads to captive in-vehicle screens — we put your brand exactly where your audience can't miss it.</p>
+    </div>
+  </section>
+
+  <!-- SERVICE TABS -->
+  <div class="service-tabs">
+    <div class="container">
+      <div class="service-tabs-inner">
+        <a href="#transit" class="service-tab active" data-tab="transit">
+          <span class="service-tab-num">01</span>
+          <span class="label">Transit Advertising</span>
+        </a>
+        <a href="#commuter-tv" class="service-tab" data-tab="commuter-tv">
+          <span class="service-tab-num">02</span>
+          <span class="label">Commuter TV</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ TRANSIT ADVERTISING ═══════════ -->
+  <section id="transit" style="background: var(--navy);">
+    <div class="service-intro container">
+      <div class="service-intro-layout">
+        <div class="service-intro-text reveal">
+          <p class="section-label">Platform 01</p>
+          <h2 class="section-title">Transit<br><span class="amber">Advertising.</span></h2>
+          <p>Mobile billboard advertising is one of the most powerful and cost-effective mediums available. By transforming buses and kombis into <strong>dynamic, attention-grabbing rolling billboards</strong>, we guarantee massive brand impressions across every city, town and village in Eswatini.</p>
+          <p>Our kombis function as <strong>three mobile billboards for the price of one</strong> — with both side panels branded for maximum visibility in both directions, plus rear branding that captures every trailing vehicle on highways and national roads.</p>
+          <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
+            <a href="contact.html" class="btn btn-amber">Start a Campaign</a>
+            <a href="portfolio.html" class="btn btn-outline">See Our Work</a>
+          </div>
+        </div>
+        <div class="service-intro-img reveal reveal-delay-2">
+          <img src="workersScene.png" alt="Bus side transit advertising" loading="lazy" />
+        </div>
+      </div>
+    </div>
+
+    <div class="packages container">
+      <h3 class="reveal">Choose Your Format.</h3>
+      <div class="packages-grid">
+        <div class="package-card reveal">
+          <div class="package-img">
+            <img src="busScene.png" alt="Bus rear wrap" loading="lazy" />
+          </div>
+          <div class="package-body">
+            <div class="package-icon">🚌</div>
+            <h4>Bus Rear Wrap</h4>
+            <p>Perfectly positioned for maximum impact on motorists driving behind the bus. Those stuck in traffic receive prolonged exposure, leading to high recall and strong brand recognition.</p>
+            <div class="package-features">
+              <div class="package-feature">Targets motorists in traffic behind the vehicle</div>
+              <div class="package-feature">Prolonged exposure at traffic stops and ranks</div>
+              <div class="package-feature">Massive impressions in crowded urban areas</div>
+              <div class="package-feature">Generates awareness for pedestrians</div>
+            </div>
+            <a href="contact.html" class="btn btn-amber" style="width:100%;justify-content:center;">Get Pricing</a>
+          </div>
+        </div>
+        <div class="package-card featured reveal reveal-delay-1">
+          <div class="package-img">
+            <img src="Quantum.png" alt="Full kombi wrap" loading="lazy" />
+          </div>
+          <div class="package-body">
+            <div class="package-icon">🎨</div>
+            <h4>Full Wrap</h4>
+            <p>The full vehicle wrap offers the highest visibility and creative freedom — transforming the entire kombi or bus into a moving billboard. Guarantees broad reach and strong brand recall across diverse routes.</p>
+            <div class="package-features">
+              <div class="package-feature">Maximum creative freedom — full canvas</div>
+              <div class="package-feature">Highest brand visibility on the road</div>
+              <div class="package-feature">All sides branded — 360° coverage</div>
+              <div class="package-feature">Ideal for brand launch campaigns</div>
+            </div>
+            <a href="contact.html" class="btn btn-amber" style="width:100%;justify-content:center;">Get Pricing</a>
+          </div>
+        </div>
+        <div class="package-card reveal reveal-delay-2">
+          <div class="package-img">
+            <img src="Outside1.png" alt="Partial vehicle wrap" loading="lazy" />
+          </div>
+          <div class="package-body">
+            <div class="package-icon">✂️</div>
+            <h4>Partial Wrap</h4>
+            <p>A cost-effective option designed to deliver high-impact visibility to your target audience. All the power of transit advertising at a more accessible investment level.</p>
+            <div class="package-features">
+              <div class="package-feature">Cost-effective entry into transit advertising</div>
+              <div class="package-feature">Still achieves high-impact visibility</div>
+              <div class="package-feature">Targets key panels for maximum impressions</div>
+              <div class="package-feature">Great for ongoing brand campaigns</div>
+            </div>
+            <a href="contact.html" class="btn btn-amber" style="width:100%;justify-content:center;">Get Pricing</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ COMMUTER TV ═══════════ -->
+  <section id="commuter-tv" class="commuter-tv-section">
+    <div class="service-intro container">
+      <div class="service-intro-layout" style="grid-template-columns:1fr 1fr;">
+        <div class="service-intro-text reveal">
+          <p class="section-label">Platform 02</p>
+          <h2 class="section-title">Commuter<br><span class="amber">TV.</span></h2>
+          <p>Our Commuter TV platform places <strong>permanently installed screens inside kombi taxi fleets</strong> across Eswatini. These screens run all day, every day as the taxi makes its routes — delivering your video advertisement to a truly captive audience.</p>
+          <p>Commuters have nowhere to go and nothing to do but watch. Your message is seen multiple times within every 30-minute journey slot, ensuring <strong>exceptional brand recall</strong> and a unique opportunity for direct audience engagement.</p>
+          <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
+            <a href="contact.html" class="btn btn-amber">Book Air Time</a>
+          </div>
+        </div>
+        <div class="service-intro-img reveal reveal-delay-2">
+          <img src="inside3.png" alt="Commuter TV screen inside kombi" loading="lazy" />
+        </div>
+      </div>
+    </div>
+
+    <div class="how-it-works container">
+      <p class="section-label reveal">How It Works</p>
+      <h3 class="reveal" style="font-family:var(--font-display);font-size:2rem;letter-spacing:.05em;margin-bottom:0;color:var(--white);">From Your Ad to Their Eyeballs.</h3>
+      <div class="steps-grid">
+        <div class="step reveal">
+          <div class="step-num">01</div>
+          <h4>Submit Your Ad</h4>
+          <p>Send us your video creative. Our team helps you ensure it meets the spec for the platform.</p>
+        </div>
+        <div class="step reveal reveal-delay-1">
+          <div class="step-num">02</div>
+          <h4>Scheduled to Air</h4>
+          <p>Your ad is loaded into rotation across the Commuter TV fleet and assigned to time slots.</p>
+        </div>
+        <div class="step reveal reveal-delay-2">
+          <div class="step-num">03</div>
+          <h4>Plays All Day</h4>
+          <p>Screens run from 6am to 8pm daily — 6:00–9:00, 9:00–15:00 and 15:00–20:00 time bands.</p>
+        </div>
+        <div class="step reveal reveal-delay-3">
+          <div class="step-num">04</div>
+          <h4>High Recall</h4>
+          <p>Your ad loops multiple times per 30-min journey. Captive audience = maximum retention.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pricing container">
+      <p class="section-label reveal">Monthly Package</p>
+      <h3 class="reveal" style="font-family:var(--font-display);font-size:2rem;letter-spacing:.05em;margin-bottom:2.5rem;color:var(--white);">Transparent Pricing.</h3>
+      <div class="pricing-layout">
+        <div class="pricing-card reveal">
+          <div class="pricing-card-header">
+            <div class="plan-name">Commuter TV — Monthly</div>
+            <div class="price">E47,500</div>
+            <div class="price-sub">per month · full day rotation</div>
+          </div>
+          <div class="pricing-card-body">
+            <table class="pricing-table">
+              <thead>
+                <tr>
+                  <th>Time Band</th>
+                  <th>Slots / Loop</th>
+                  <th>Daily Slots</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>6:00 – 9:00am</td>
+                  <td>2 per loop</td>
+                  <td>72</td>
+                </tr>
+                <tr>
+                  <td>9:00am – 3:00pm</td>
+                  <td>4 per loop</td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td>3:00pm – 8:00pm</td>
+                  <td>2 per loop</td>
+                  <td>—</td>
+                </tr>
+                <tr style="background:rgba(245,166,35,0.06);">
+                  <td style="color:var(--white);font-weight:600;">Total Slots / Day</td>
+                  <td></td>
+                  <td style="color:var(--amber);font-weight:700;font-size:1rem;">2,160 / month</td>
+                </tr>
+              </tbody>
+            </table>
+            <a href="contact.html" class="btn btn-amber" style="width:100%;justify-content:center;">Book This Package</a>
+          </div>
+        </div>
+        <div class="pricing-highlights reveal reveal-delay-1">
+          <div class="p-highlight">
+            <div class="ph-icon">📺</div>
+            <div>
+              <h5>Permanently Installed Screens</h5>
+              <p>Screens run all day every day as the taxi makes its routes — no downtime, no gaps.</p>
+            </div>
+          </div>
+          <div class="p-highlight">
+            <div class="ph-icon">🔁</div>
+            <div>
+              <h5>Multiple Exposures Per Journey</h5>
+              <p>Ads loop several times within every 30-minute slot. Your message sticks.</p>
+            </div>
+          </div>
+          <div class="p-highlight">
+            <div class="ph-icon">🧠</div>
+            <div>
+              <h5>High Recall Environment</h5>
+              <p>Commuters engage entirely with your ad — there is no competing for attention in a moving vehicle.</p>
+            </div>
+          </div>
+          <div class="p-highlight">
+            <div class="ph-icon">📍</div>
+            <div>
+              <h5>Eswatini-Wide Coverage</h5>
+              <p>Deployed across kombi fleets covering all major routes throughout Eswatini.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ctv-gallery container">
+      <p class="section-label reveal">See It In Action</p>
+      <div class="ctv-gallery-grid">
+        <div class="ctv-gallery-item reveal">
+          <img src="tvInside.jpg" alt="Commuter TV screen inside kombi" loading="lazy" />
+        </div>
+        <div class="ctv-gallery-item reveal reveal-delay-1">
+          <img src="inside.png" alt="In-taxi advertising screen" loading="lazy" />
+        </div>
+        <div class="ctv-gallery-item reveal reveal-delay-2">
+          <img src="inter1.png" alt="Kombi TV advertisement" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE CTA -->
+  <section class="service-cta noise">
+    <div class="service-cta-content container reveal">
+      <h2>NOT SURE<br><span class="amber">WHICH PLATFORM?</span></h2>
+      <p>We'll help you figure out exactly the right combination of platforms to achieve your campaign goals. Let's talk.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="contact.html" class="btn btn-amber">Talk to Us</a>
+        <a href="portfolio.html" class="btn btn-outline">See Our Work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo-box">
+            <img src="logo1.png" alt="NuWorld Media" style="height: 48px; width: auto;" />
+            <div class="logo-text">Nu<span>World</span></div>
+          </a>
+          <p>Eswatini's leading transit advertising specialists. A collaborative effort between Triple Three Media, Dotmedia and Nkente Media.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="portfolio.html">Our Work</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#transit">Transit Advertising</a></li>
+            <li><a href="#commuter-tv">Commuter TV</a></li>
+            <li><a href="#transit">Bus Rear Wraps</a></li>
+            <li><a href="#transit">Full Vehicle Wraps</a></li>
+            <li><a href="#transit">Partial Wraps</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <div class="footer-contact-item">
+            <svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            <span>134 Gule Street Extension 3,<br>Mbabane, Eswatini</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <span>iamsanza@gmx.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            <span>+268 7995 4649</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 NuWorld Media. All rights reserved.</span>
+        <span>Mbabane, Eswatini</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+      // Update active tab on scroll
+      const transitSection = document.getElementById('transit');
+      const ctvSection = document.getElementById('commuter-tv');
+      const tabs = document.querySelectorAll('.service-tab');
+      const scrollY = window.scrollY + 200;
+      if (ctvSection && scrollY >= ctvSection.offsetTop) {
+        tabs.forEach(t => t.classList.remove('active'));
+        document.querySelector('[data-tab="commuter-tv"]').classList.add('active');
+      } else {
+        tabs.forEach(t => t.classList.remove('active'));
+        document.querySelector('[data-tab="transit"]').classList.add('active');
+      }
+    });
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.add('open');
+    });
+    document.getElementById('menuClose').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.remove('open');
+    });
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
